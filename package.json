@@ -10,5 +10,6 @@
     "node.js"
   ],
   "author": "chencf",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }
