@@ -280,7 +280,7 @@ console.log(promise)
 2. catch  其实就是then(null, rejection)的别名
 3. all    多个promise数组都成功时才会resolve 有一个失败则reject   发送串行
 4. race   最快返回的promise 决定其状态，无论是resolve 或reject
-5. allSettled  等待所谓promise结果返回 才改变状态，它的回调函数会接收一个数组作为参数，对应前面的每个promise对象
+5. allSettled  等待所有promise结果返回 才改变状态，它的回调函数会接收一个数组作为参数，对应前面的每个promise对象
 6. any    等待所以返回，全部失败都是reject  有一个resolve就是resolve
 
 
@@ -323,5 +323,48 @@ try {
   console.log(e)console.log(e)
 }
 
-
 ```
+### 5. http
+
+创建简单http 服务
+
+```javascript
+
+const http = require('http');
+
+http.createServer((request, response) => {
+  response.writeHead(200)
+  response.end('hello')
+}).listen(3000);
+```
+
+### 5. express
+
+Features
+- Robust routing   强健的路由
+- Focus on high performance  关注高性能
+- Super-high test coverage   高测试覆盖率
+- HTTP helpers (redirection, caching, etc)  http服务助手
+- View system supporting 14+ template engines  支持14+模板引擎
+- Content negotiation          内容处理
+- Executable for generating applications quickly 快速创建可执行的应用程序?
+
+
+中间件 
+- next 更好的分割组织流程代码
+- 洋葱模型
+- 不能使用异步
+
+### 5. koa
+
+- 中间件有了暂停的能力，async await
+- 路由功能，精减 需要自行安装koa-mount  根路由要放在最下面
+- 回调的request response 都挂在context上面，这样子就不需要把一个参数挂在response上了
+- res.status .send方法 都改为了赋值运算 ctx.status = xxx ctx.body = xxxx;
+- 
+
+koa vs express
+
+- express 门槛更低  koa更强大优雅
+- express 封装更多东西，开发更快速   koa可定制型更高
+
