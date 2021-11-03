@@ -1,0 +1,1 @@
+'`<span>${_(user.name)}</span>`'

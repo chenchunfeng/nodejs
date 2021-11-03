@@ -1,0 +1,1 @@
+'`<h1>${include("templateB")}</h1>`'

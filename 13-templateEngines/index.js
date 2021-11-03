@@ -28,3 +28,8 @@ Object.keys(templateMap).forEach(key => {
   templateMap[key] = vm.runInNewContext(`() => { return ${temp};}`, Object.assign(context, {user: user}))
 })
 console.log(templateMap['templateA']());
+
+// const createTemplate = require('./finally');
+// const templateA = './templateA.js';
+// const templateB = './templateB.js';
+// console.log(createTemplate(templateA))

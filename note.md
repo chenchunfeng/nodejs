@@ -284,7 +284,7 @@ console.log(promise)
 6. any    等待所以返回，全部失败都是reject  有一个resolve就是resolve
 
 
-### 5. async await 异步终极方案 promise语法糖
+### 6. async await 异步终极方案 promise语法糖
 
 async func 返回的就是一个promise对象，他的状态受await 的promise对象影响 或者return 值影响。
 
@@ -324,7 +324,7 @@ try {
 }
 
 ```
-### 5. http
+### 7. http
 
 创建简单http 服务
 
@@ -338,7 +338,7 @@ http.createServer((request, response) => {
 }).listen(3000);
 ```
 
-### 5. express
+### 8. express
 
 Features
 - Robust routing   强健的路由
@@ -355,7 +355,7 @@ Features
 - 洋葱模型
 - 不能使用异步
 
-### 5. koa
+### 9. koa
 
 - 中间件有了暂停的能力，async await
 - 路由功能，精减 需要自行安装koa-mount  根路由要放在最下面
@@ -368,3 +368,48 @@ koa vs express
 - express 门槛更低  koa更强大优雅
 - express 封装更多东西，开发更快速   koa可定制型更高
 
+### 10. rpc  remote procedure call  远程程序调用
+
+与ajax的相同点
+- 都是计算机之间的网络通信
+- 都需要约定数据格式
+不同点
+- 不一定使用dns作为寻址服务
+- 应用层协议一般不使用http
+- 基于tcp udp协议
+  
+ajax 寻址 负载均衡
+
+- client 浏览器，使用域名向dns server换ip 地址
+- 浏览器再通过ip地址访问服务器
+
+rpc
+- client node.js 向 LB server服务器换ip，没有域名的概念， 有特定的标识VIP LD
+- 
+
+TCP通信方式
+
+单工 半双工 全双工
+
+### 11 node.js buffer
+
+javaScript 语言自身只有字符串数据类型，没有二进制数据类型。
+
+但在处理像TCP流或文件流时，必须使用到二进制数据。因此在 Node.js中，定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。
+
+protocol-buffers 比json xml 更高效直观储存数据
+
+### 12 es6 template engines
+
+```javascript
+  const user = {
+    name: 'Mr.chen',
+    age: '45'
+  }
+  const template = '`<div>${user.name}</div>`'
+
+
+  function render() {
+    document.body.append(template)
+  }
+```
