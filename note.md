@@ -413,3 +413,78 @@ protocol-buffers 比json xml 更高效直观储存数据
     document.body.append(template)
   }
 ```
+
+### 32 graphQL
+
+这东西感觉还是太麻烦了，通过前端query={xxxx{xxxx,xxxx}}
+
+```javascript
+  fetch('./api?query={comment{id,avatar,name,isTop,content,publishDate,commentNum,praiseNum}}')
+
+  fetch("./api", {
+  method: "POST",
+  headers: {
+    'content-type': 'application/json'
+  },
+  body: JSON.stringify({
+    "query": "mutation { praise(id: " + $bindtarget.getAttribute("data-id") + ") }"
+  })
+})
+// schema
+const schema = buildSchema(`
+    type Comment {
+        id: Int
+        avatar: String
+        name: String
+        isTop: Boolean
+        content: String
+        publishDate: String
+        commentNum: Int
+        praiseNum: Int
+    }
+    type Query {
+        comment: [Comment]
+    }
+    type Mutation {
+        praise(id: Int): Int
+    }
+`)
+
+schema.getQueryType().getFields().comment.resolve = () => {
+    return Object.keys(mockDatabase).map(key=> {
+        return mockDatabase[key];
+    })
+}
+schema.getMutationType().getFields().praise.resolve = (args0, { id }) => {
+    mockDatabase[id].praiseNum++;
+
+    return mockDatabase[id].praiseNum
+}
+
+module.exports = schema;
+
+```
+
+### 35 react渲染demo
+### 36 前后端同构
+
+需求
+- 后端需要渲染列表
+  - 首屏加速
+  - SEO
+- 前端也会有排序，刷新等操作
+  
+这个时间就需要采用同构的方法
+- 同一个模板/组件,可以在服务端（node.js）渲染也可以在浏览器渲染。
+
+<strong>核心</strong>
+
+- ReactDomServer.renderToString()
+- VueServerRenderer.renderToString()
+
+  
+> React/Vue同构的最大难题其实是数据部分
+> 同构的关键-注重职责的分离
+
+
+

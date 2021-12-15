@@ -14,6 +14,8 @@ const server = require('./lib/geeknode-rpc-server')(schemas.ColumnRequest, schem
 
 server
     .createServer((request, response) => {
+        console.log(request)
+        console.log(response)
         // 因为都是假数据，这里就没有使用栏目id。真实项目会拿这个columnid去请求数据库
         const columnid = request.body;
 
