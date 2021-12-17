@@ -43,3 +43,9 @@ app.use(
 
 body如果赋值为buffer 需要设type = html,不然会被误以为下载
 Requests per second:    4285.26 [#/sec] (mean)
+
+
+**总结**
+
+1. 空间换时间
+2. 减少不必要的计算，提前计算。

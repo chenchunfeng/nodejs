@@ -10,7 +10,8 @@ app.use(
 );
 
 // const INDEX = fs.readFileSync(__dirname + '/source/index.htm', 'utf-8')
-const INDEX = fs.readFileSync(__dirname + '/source/index.htm')
+const INDEX = fs.readFileSync(__dirname + '/source/index.htm', 'utf-8');
+
 app.use(
     mount('/', async (ctx) => {
         // ctx.body = fs.readFileSync(__dirname + '/source/index.htm', 'utf-8')
@@ -18,8 +19,10 @@ app.use(
         ctx.status = 200;
         ctx.type = "html";
         ctx.body = INDEX;
+        fakeArray.push(INDEX);
     })
 );
+const fakeArray = [];
 
 
 app.listen(3000);
